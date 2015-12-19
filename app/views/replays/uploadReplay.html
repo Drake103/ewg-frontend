@@ -1,0 +1,39 @@
+﻿<div class="panel panel-default" style="text-align: center;">
+    <!-- Default panel contents -->
+    <div class="panel-heading ewg-panel-heading clearfix" style="text-align: left;">
+        <span class="ewg-panel-header-text">Upload replay</span>
+    </div>
+    <div class="drop-zone" ng-show="state == 0">
+        <div>
+            <div ng-file-drop ng-file-select ng-model="files"
+                 drag-over-class="dragover" ng-multiple="false" allow-dir="true"
+                 accept=".wargamerpl2" style="padding: 54px;">
+                <p class="text-center" style="font-size: 14pt;">Drop replay here or click to upload</p>
+            </div>
+            <div ng-no-file-drop>File Drag/Drop is not supported for this browser</div>
+        </div>
+    </div>
+    <div ng-show="state == 1" class="ewg-upload-inner" style="padding: 20px;">
+        <h4 ng-show="vm.errorMessage === null">Replay is being uploaded...</h4>
+        <h4 ng-show="vm.errorMessage !== null">{{vm.errorMessage}}</h4>
+        <div class="progress ewg-upload-progress">
+            <div class="progress-bar" ng-class="{'progress-bar-danger': vm.errorMessage !== null, 'progress-bar-success': vm.errorMessage == null}" role="progressbar" aria-valuenow="{{vm.progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ 'width' : vm.progress + '%' }">
+                <span ng-show="vm.errorMessage === null">{{vm.progress}}%</span>
+                <span ng-show="vm.errorMessage !== null">Error</span>
+            </div>
+        </div>
+    </div>
+
+
+    <form ng-show="state == 2" class="ewg-upload-inner">
+        <h4>Replay is successfully uploaded! <br />Now you can set its title:</h4>
+
+        <div class="input-group" style="margin: 20px;">
+            <input class="form-control" type="text" placeholder="Title" id="title" name="title" ng-model="vm.title" value="no title" required />
+            <span class="input-group-btn">
+                <input class="btn btn-primary" type="submit" data-ng-click="vm.setTitle()" value="Set title">
+            </span>
+        </div>
+    </form>
+    
+</div>

@@ -1,0 +1,49 @@
+﻿<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading ewg-panel-heading clearfix">
+        <span class="ewg-panel-header-text">Replays</span>
+        <div class="input-group pull-right stylish-input-group" style="width: 200px;">
+            <input type="text" class="form-control input-sm" placeholder="Search" ng-model="vm.searchStr" ng-model-options="{debounce: 1000}">
+        </div>
+    </div>
+
+    <!-- Table -->
+    <table class="table table-hover ewg-replays-table">
+        <tr>
+            <th>Upload date</th>
+            <th>Title</th>
+            <th>Players</th>
+            <th>Map</th>
+            <th>Game mode</th>
+            <th>Version</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="replay in vm.replays" ng-click="vm.browseReplay(replay.Id)">
+            <td>{{::replay.UploadDate | date:'yyyy-MM-dd'}}</td>
+            <td>{{::replay.Title}}</td>
+            <td>{{::replay.PlayersCount}}</td>
+            <td>{{::replay.MapName}}</td>
+            <td>{{::replay.VictoryConditionName}}</td>
+            <td>{{::replay.GameVersion}}</td>
+            <td ng-click="vm.stopPropagation($event)"><a ng-href="/Replays/GetReplayFile?replayId={{::replay.Id}}"><span class="glyphicon glyphicon-download"></span></a></td>
+        </tr>
+    </table>
+
+    <nav style="text-align: center" data-ng-show="vm.totalPages > 1">
+        <ul class="pagination">
+            <li>
+                <button class="btn" ng-disabled="vm.currentPage <= 1" data-ng-click="vm.browsePage(1)" aria-label="First">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            <li data-ng-repeat="page in vm.pages">
+                <button class="btn" ng-disabled="vm.currentPage == page" data-ng-click="vm.browsePage(page)">{{page}}</button>
+            </li>
+            <li>
+                <button class="btn" ng-disabled="vm.currentPage >= vm.totalPages" data-ng-click="vm.browsePage(vm.totalPages)" aria-label="Last">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>
