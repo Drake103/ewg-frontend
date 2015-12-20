@@ -14,15 +14,28 @@ class ReplaysService {
     return response;
   }
 
-  getLatest(startIndex, pageSize) {
+  getLatest(startIndex, pageSize, searchText = null) {
     let params = {
       startIndex,
       pageSize,
+      searchText,
     };
-    let resource = this.$resource(this.apiRoot + '/Replays/List', params, {
+    let resource = this.$resource(this.apiRootOld + '/Replays/List', params, {
       get: {
         method:'GET',
         isArray: true,
+      },
+    });
+    return resource.get().$promise;
+  }
+
+  getCount(searchText = null) {
+    let params = {
+      searchText,
+    };
+    let resource = this.$resource(this.apiRootOld + '/Replays/GetCount', params, {
+      get: {
+        method:'GET',
       },
     });
     return resource.get().$promise;
@@ -35,6 +48,7 @@ class ReplaysService {
 }
 
 ReplaysService.prototype.apiRoot = config.apiRoot;
+ReplaysService.prototype.apiRootOld = config.apiRootOld;
 ReplaysService.createInstance.$inject = ['$q', '$resource'];
 
 export default ReplaysService;

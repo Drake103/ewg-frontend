@@ -2,7 +2,7 @@ import NavbarController from './navbar.controller';
 
 class Navbar {
   constructor() {
-    this.restrict = 'E';
+    this.restrict = 'A';
     this.templateUrl = '/shared/navbar/navbar.view.html';
     this.controller = NavbarController;
   }

@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 let defaultPageSize = 20;
 
-class ReplaysListController {
+class ReplaysCardController {
   constructor($scope, $routeParams, $location, ReplaysService) {
     let replayId = $routeParams.view || -1;
     let pageNumber = $routeParams.page || 1;
@@ -87,5 +87,5 @@ class ReplaysListController {
   }
 }
 
-ReplaysListController.$inject = ['$scope', '$routeParams', '$location', 'ReplaysService'];
-export default ReplaysListController;
+ReplaysCardController.$inject = ['$scope', '$routeParams', '$location', 'ReplaysService'];
+export default ReplaysCardController;

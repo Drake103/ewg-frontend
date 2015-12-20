@@ -2,11 +2,16 @@
 <html lang="en" ng-app="ewg">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Wargame Replays</title>
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-  <div ng-view=""></div>
+  <div ewg-navbar class="navigation"></div>
+  <ewg-header></ewg-header>
+  <div ng-view="" id="content-wrapper"></div>
+  <ewg-footer></ewg-footer>
   <script src="/assets/script.js"></script>
 </body>
 </html>

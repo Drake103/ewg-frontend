@@ -14,8 +14,8 @@ var autoprefixer  = require('gulp-autoprefixer');
 var concat        = require('gulp-concat');
 var gulpFilter    = require('gulp-filter');
 var express       = require('express');
-var stylus        = require('gulp-stylus');
-var koutoSwiss    = require('kouto-swiss');
+var sass          = require('gulp-sass');
+var neat          = require('node-neat');
 var rigger        = require('gulp-rigger');
 
 gulp.task('browser-sync', function() {
@@ -37,25 +37,20 @@ gulp.task('static-server', function() {
   });
 });
 
-gulp.task('stylus:build', function() {
+gulp.task('sass:build', function() {
 
-  gulp.src('./styles/index.styl')
-      .pipe(stylus({
-        paths: [path.join(__dirname, '/node_modules')],
-        'include css': true,
-        use: [koutoSwiss()],
-        urlfunc: 'embedurl',
-        linenos: true,
-        define: {
-          $version: pkg.version,
-        },
-      }))
-      .pipe(rename('style.css'))
-      .pipe(gulp.dest('./public/assets/'));
+  gulp.src('./styles/**/*.scss')
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass.sync({ includePaths: neat.includePaths }).on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(concat('style.css'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./public/assets'));
 });
 
-gulp.task('stylus:watch', function() {
-  gulp.watch('./styles/**/*.styl', ['stylus:build']);
+gulp.task('sass:watch', function() {
+  gulp.watch('./styles/**/*.scss', ['sass:build']);
 });
 
 gulp.task('fonts', function() {
@@ -112,8 +107,8 @@ gulp.task('html:watch', function() {
   gulp.watch('./app/**/*.html', ['html:build']);
 });
 
-gulp.task('watch', ['images:watch', 'js:watch', 'stylus:watch', 'html:watch']);
+gulp.task('watch', ['images:watch', 'js:watch', 'sass:watch', 'html:watch']);
 
-gulp.task('default', ['images:build', 'js:build', 'stylus:build', 'html:build', 'fonts']);
+gulp.task('default', ['images:build', 'js:build', 'sass:build', 'html:build', 'fonts']);
 
 gulp.task('serve', ['default', 'static-server', 'watch']);
