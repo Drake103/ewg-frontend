@@ -44,9 +44,11 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-stylus": "^2.1.1",
     "lodash": "^3.10.1",
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2",
     "q": "^1.4.1",
     "uglifyify": "^3.0.1",
     "vinyl-source-stream": "^1.1.0"

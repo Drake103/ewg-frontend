@@ -1,0 +1,5 @@
+@import '../components/table-minimal';
+
+.ewg-replays-table{
+  @extend .table-minimal;
+}
