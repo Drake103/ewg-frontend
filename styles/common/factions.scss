@@ -1,0 +1,147 @@
+$deck-small-path: '/images/deck/small';
+
+/* Nations - begin */
+
+.ewg-nations-ussr {
+    background-image: url($deck-small-path + '/ussr.png');
+}
+
+.ewg-nations-usa {
+    background-image: url($deck-small-path + '/usa.png');
+}
+
+.ewg-nations-ddr {
+    background-image: url($deck-small-path + '/ddr.png');
+}
+
+.ewg-nations-bdr {
+    background-image: url($deck-small-path + '/bdr.png');
+}
+
+.ewg-nations-norad {
+    background-image: url($deck-small-path + '/norad.png');
+}
+
+.ewg-nations-scandi {
+    background-image: url($deck-small-path + '/scandi.png');
+}
+
+.ewg-nations-cw {
+    background-image: url($deck-small-path + '/cw.png');
+}
+
+.ewg-nations-landjut {
+    background-image: url($deck-small-path + '/landjut.png');
+}
+
+.ewg-nations-uk {
+    background-image: url($deck-small-path + '/uk.png');
+}
+
+.ewg-nations-nswp {
+    background-image: url($deck-small-path + '/nswp.png');
+}
+
+.ewg-nations-anzac {
+    background-image: url($deck-small-path + '/anzac.png');
+}
+
+.ewg-nations-eu {
+    background-image: url($deck-small-path + '/eu.png');
+}
+
+.ewg-nations-ca {
+    background-image: url($deck-small-path + '/canada.png');
+}
+
+.ewg-nations-cn {
+    background-image: url($deck-small-path + '/china.png');
+}
+
+.ewg-nations-cz {
+    background-image: url($deck-small-path + '/czech.png');
+}
+
+.ewg-nations-nk {
+    background-image: url($deck-small-path + '/nk.png');
+}
+
+.ewg-nations-fr {
+    background-image: url($deck-small-path + '/fra.png');
+}
+
+.ewg-nations-jp {
+    background-image: url($deck-small-path + '/japan.png');
+}
+
+.ewg-nations-norway {
+    background-image: url($deck-small-path + '/norway.png');
+}
+
+.ewg-nations-pl {
+    background-image: url($deck-small-path + '/pl.png');
+}
+
+.ewg-nations-sovkor {
+    background-image: url($deck-small-path + '/sovkor.png');
+}
+
+.ewg-nations-rd {
+    background-image: url($deck-small-path + '/rd.png');
+}
+
+.ewg-nations-bd {
+    background-image: url($deck-small-path + '/bd.png');
+}
+
+.ewg-nations-sw {
+    background-image: url($deck-small-path + '/sweden.png');
+}
+
+.ewg-nations-dk {
+    background-image: url($deck-small-path + '/denmark.png');
+}
+
+.ewg-nations-sk {
+    background-image: url($deck-small-path + '/sk.png');
+}
+
+.ewg-nations-redfor, .ewg-nations-bluefor {
+    background-color: #575656;
+}
+
+/* Nations - end */
+
+/* Specs - begin */
+.ewg-spec-motorized {
+    background-image: url($deck-small-path + '/moto.png');
+}
+
+.ewg-spec-armor {
+    background-image: url($deck-small-path + '/armor.png');
+}
+
+.ewg-spec-support {
+    background-image: url($deck-small-path + '/support.png');
+}
+
+.ewg-spec-marine {
+    background-image: url($deck-small-path + '/marine.png');
+}
+
+.ewg-spec-mech {
+    background-image: url($deck-small-path + '/mech.png');
+}
+
+.ewg-spec-airborne {
+  background-image: url($deck-small-path + '/airborne.png');
+}
+
+.ewg-spec-naval {
+  background-image: url($deck-small-path + '/naval.png');
+}
+
+.ewg-spec-general {
+  background-color: #575656;
+}
+/* Specs - end */

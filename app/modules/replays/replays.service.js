@@ -41,6 +41,19 @@ class ReplaysService {
     return resource.get().$promise;
   }
 
+  getById(replayId) {
+    let params = {
+      replayId,
+    };
+
+    let resource = this.$resource(this.apiRootOld + '/Replays/Details', params, {
+      get: {
+        method:'GET',
+      },
+    });
+    return resource.get().$promise;
+  }
+
   static createInstance($q, $resource) {
     ReplaysService.instance = new ReplaysService($q, $resource);
     return ReplaysService.instance;
