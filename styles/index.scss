@@ -5,6 +5,12 @@
 
 @import './modules/replays';
 
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+
 body {
   margin: 0;
+}
+
+#content-wrapper {
+  @include outer-container();
 }

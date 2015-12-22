@@ -35,17 +35,8 @@ class ReplaysListController {
     this.loadReplays(null);
   }
 
-  browseReplay(aReplayId) {
-    this.$location.search('page', null).search('view', aReplayId).search('search', null);
-    var dlg = dialogs.create('/app/views/replays/replayCardModal.html', 'ReplayCardController', aReplayId);
-    dlg.result.then(function() {
-      $location.search('page', this.currentPage).search('search', this.searchStr).search('view', null);
-      replayId = -1;
-    }, function() {
-
-      $location.search('page', this.currentPage).search('search', this.searchStr).search('view', null);
-      replayId = -1;
-    });
+  browseReplay(replayId) {
+    this.$location.path('/replays/' + replayId);
   }
 
   stopPropagation(e) {
