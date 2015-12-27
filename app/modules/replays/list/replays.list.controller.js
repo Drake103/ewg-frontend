@@ -1,17 +1,18 @@
 import _ from 'lodash';
+import config from 'config';
 
-let defaultPageSize = 20;
+let defaultPageSize = config.replays.defaultPageSize;
 
 class ReplaysListController {
   constructor($scope, $routeParams, $location, ReplaysService) {
-    let replayId = $routeParams.view || -1;
-    let pageNumber = $routeParams.page || 1;
-    let search = $routeParams.search;
-
     this.$scope = $scope;
     this.$routeParams = $routeParams;
     this.$location = $location;
     this.ReplaysService = ReplaysService;
+
+    let replayId = $routeParams.view || -1;
+    let pageNumber = $routeParams.page || 1;
+    let search = $routeParams.search;
 
     this.currentPage = pageNumber;
     this.searchStr = search;
@@ -29,9 +30,9 @@ class ReplaysListController {
     }
   }
 
-  browsePage(aPageNumber) {
-    $location.search('page', aPageNumber).search('view', null).search('search', null);
-    this.currentPage = aPageNumber;
+  browsePage(pageNum) {
+    $location.search('page', pageNum).search('view', null).search('search', null);
+    this.currentPage = pageNum;
     this.loadReplays(null);
   }
 

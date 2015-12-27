@@ -15,11 +15,7 @@ class ReplaysService {
   }
 
   getLatest(startIndex, pageSize, searchText = null) {
-    let params = {
-      startIndex,
-      pageSize,
-      searchText,
-    };
+    let params = {startIndex, pageSize, searchText};
     let resource = this.$resource(this.apiRootOld + '/Replays/List', params, {
       get: {
         method:'GET',
