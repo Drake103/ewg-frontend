@@ -3,10 +3,12 @@
 ﻿    <h4>{{ ::replay.Title }}</h4>
 ﻿  </div>
 ﻿  <div class="rc-body">
-    <div class="row">
-        <div class="col-md-2"><img class="img-rounded" style="border: 1px solid grey; width: 140px; height: 140px;"
-                                   src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQzLjUiIHk9IjcwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTQweDE0MDwvdGV4dD48L2c+PC9zdmc+" /></div>
-        <div class="col-md-5">
+    <div class="rc-game-info">
+        <div class="rc-minimap">
+          <img class="img-rounded" style="border: 1px solid grey; width: 140px; height: 140px;"
+                                   src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQzLjUiIHk9IjcwIiBzdHlsZT0iZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTQweDE0MDwvdGV4dD48L2c+PC9zdmc+" />
+        </div>
+        <div class="rc-general-info">
             <table class="table table-condensed">
                 <tr><td class="ewg-header-col">Map</td><td>{{::replay.MapName}}</td></tr>
                 <tr><td class="ewg-header-col">Game mode</td><td>{{::replay.VictoryConditionName}}</td></tr>
@@ -25,8 +27,8 @@
             <span class="pull-right" style="margin-top: 5px;">Downloads: {{::replay.DownloadsCounter}}</span>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="rc-players-info">
+        <div>
             <h2 class="army-style-font" style="color: #2525dd">BLUEFOR</h2>
             <table class="table table-condensed table-striped ewg-players-table">
                 <tr>
@@ -52,7 +54,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-6">
+        <div>
             <h2 class="army-style-font" style="color:#dd2525">REDFOR</h2>
             <table class="table table-condensed table-striped ewg-players-table">
                 <tr>
