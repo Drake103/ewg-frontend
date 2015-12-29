@@ -1,0 +1,64 @@
+@import 'bourbon';
+@import 'neat';
+
+@import '../common/colors';
+
+.footer {
+  $base-spacing: 1em !default;
+  $action-color: $primary_color !default;
+  $medium-screen: em(640) !default;
+  $large-screen: em(860) !default;
+  $footer-background: $background_1;
+  $footer-color: white;
+  $footer-link-color: transparentize($footer-color, 0.6);
+  $footer-disclaimer-color: transparentize($footer-color, 0.6);
+
+  background: $footer-background;
+  padding: $base-spacing;
+  width: 100%;
+  display: inline-block;
+
+  >div {
+    @include outer-container();
+  }
+
+  .stats {
+
+    $base-spacing: 1.5em !default;
+    $base-font-color: white !default;
+    $action-color: $info_color !default;
+    $stats-color: lighten($action-color, 10%);
+
+    padding: $base-spacing / 2;
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      border-right: 1px solid transparentize($base-font-color, 0.8);
+      color: $stats-color;
+      display: inline;
+      float: left;
+      font-size: 1.2em;
+      line-height: 1.1em;
+      padding: 0 0.7em;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    span {
+      color: $base-font-color;
+      display: block;
+      font-size: 0.7em;
+      font-weight: normal;
+    }
+  }
+
+}

@@ -3,8 +3,11 @@
 
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
 
+@import './common/colors.scss';
+
 body {
   margin: 0;
+  background-color: $background;
 }
 
 #content-wrapper {
