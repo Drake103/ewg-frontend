@@ -1,2 +1,32 @@
 @import 'bourbon';
 @import 'neat';
+
+.panel {
+
+  $large-screen: em(860) !default;
+  $horizontal-bar-mode: $large-screen;
+  $panel-heading-height: 30px;
+
+  .panel-heading-wrapper {
+    .panel-heading {
+      min-height: $panel-heading-height;
+
+      @include media ($horizontal-bar-mode) {
+        float: left;
+      }
+    }
+
+    .panel-tools {
+      background: #505050;
+      clear: both;
+      display: block;
+      min-height: $panel-heading-height;
+
+      @include media($horizontal-bar-mode) {
+        background: transparent;
+        clear: none;
+        float: right;
+      }
+    }
+  }
+}
