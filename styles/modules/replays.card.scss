@@ -1,29 +1,27 @@
 @import 'bourbon';
 @import 'neat';
 
-div.rc-wrapper {
-  .rc-header {
+@import '../components/table-condensed';
 
+.rc-game-info {
+  .rc-minimap {
+    @include span-columns(2);
   }
-
-  .rc-body {
-    .rc-game-info {
-      .rc-minimap {
-        @include span-columns(2);
-      }
-      .rc-general-info {
-        @include span-columns(5);
-      }
+  .rc-general-info {
+    @include span-columns(5);
+  }
+}
+.rc-players-info {
+  >div {
+    &:nth-child(1) {
+      @include span-columns(6);
     }
-    .rc-players-info {
-      >div {
-        &:nth-child(1) {
-          @include span-columns(6);
-        }
-        &:nth-child(2) {
-          @include span-columns(6);
-        }
-      }
+    &:nth-child(2) {
+      @include span-columns(6);
     }
   }
+}
+
+.players-table {
+  @extend .table-condensed;
 }

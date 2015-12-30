@@ -1,8 +1,10 @@
-﻿<div class="rc-wrapper" ng-controller='ReplaysCardController as vm'>
-﻿  <div class="rc-header">
-﻿    <h4>{{ ::replay.Title }}</h4>
+﻿<div class="panel" ng-controller='ReplaysCardController as vm'>
+﻿  <div class="panel-heading-wrapper">
+    <div class="panel-heading">
+      <h3>{{::replay.Title}}</h3>
+    </div>
 ﻿  </div>
-﻿  <div class="rc-body">
+﻿  <div class="panel-body">
     <div class="rc-game-info">
         <div class="rc-minimap">
           <img class="img-rounded" style="border: 1px solid grey; width: 140px; height: 140px;"
@@ -21,7 +23,7 @@
 
         <div class="pull-right" style="margin-right: 15px;">
             <a class="btn btn-primary" ng-href="/Replays/GetReplayFile?replayId={{::replay.Id}}">
-                <span class="glyphicon glyphicon-download"></span> Download
+                <span class="fa fa-download"></span> Download
             </a>
             <div class="clearfix"></div>
             <p class="pull-right" style="margin-top: 5px;">Downloads: <span class="badge-notice">{{::replay.DownloadsCounter}}</span></p>
@@ -31,14 +33,17 @@
         <div>
             <h2 class="army-style-font" style="color: #2525dd">BLUEFOR</h2>
             <table class="table table-condensed table-striped ewg-players-table">
+              <thead>
                 <tr>
-                    <th class="col-md-2"></th>
-                    <th class="col-md-6">Player</th>
-                    <th class="col-md-1">Level</th>
-                    <th class="col-md-1">Rank</th>
-                    <th class="col-md-1">ELO</th>
-                    <th class="col-md-1"></th>
+                    <th></th>
+                    <th>Player</th>
+                    <th>Level</th>
+                    <th>Rank</th>
+                    <th>ELO</th>
+                    <th></th>
                 </tr>
+              </thead>
+              <tbody>
                 <tr ng-repeat="player in replay.Alliances[0].Players">
                     <td>
                         <span title="{{::player.DeckInfo.NationName}}" class="ewg-deck-flag ewg-nations-{{::player.DeckInfo.NationCode}}"></span>
@@ -49,36 +54,41 @@
                     <td>{{::player.PlayerRank}}</td>
                     <td>{{::player.PlayerElo}}</td>
                     <td>
-                        [<a ng-click="copyToClipboard(player.PlayerDeckContent)" class="ewg-no-href-link">deck</a>]
+                        [<a ng-click="vm.copyToClipboard(player.PlayerDeckContent)" class="ewg-no-href-link">deck</a>]
                     </td>
                 </tr>
+              </tbody>
             </table>
         </div>
         <div>
-            <h2 class="army-style-font" style="color:#dd2525">REDFOR</h2>
-            <table class="table table-condensed table-striped ewg-players-table">
-                <tr>
-                    <th class="col-md-2"></th>
-                    <th class="col-md-6">Player</th>
-                    <th class="col-md-1">Level</th>
-                    <th class="col-md-1">Rank</th>
-                    <th class="col-md-1">ELO</th>
-                    <th class="col-md-1"></th>
-                </tr>
-                <tr ng-repeat="player in replay.Alliances[1].Players">
-                    <td>
-                        <span title="{{::player.DeckInfo.NationName}}" class="ewg-deck-flag ewg-nations-{{::player.DeckInfo.NationCode}}"></span>
-                        <span title="{{::player.DeckInfo.SpecName}}" class="ewg-deck-img ewg-spec-{{::player.DeckInfo.SpecCode}}"></span>
-                    </td>
-                    <td title="{{::player.PlayerName }}">{{::player.PlayerName }}</td>
-                    <td>{{::player.PlayerLevel}}</td>
-                    <td>{{::player.PlayerRank}}</td>
-                    <td>{{::player.PlayerElo}}</td>
-                    <td>
-                        [<a ng-click="copyToClipboard(player.PlayerDeckContent)" class="ewg-no-href-link">deck</a>]
-                    </td>
-                </tr>
-            </table>
+          <h2 class="army-style-font" style="color:#dd2525">REDFOR</h2>
+          <table class="players-table">
+            <thead>
+              <tr>
+                  <th></th>
+                  <th>Player</th>
+                  <th>Level</th>
+                  <th>Rank</th>
+                  <th>ELO</th>
+                  <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="player in replay.Alliances[1].Players">
+                  <td>
+                      <span title="{{::player.DeckInfo.NationName}}" class="ewg-deck-flag ewg-nations-{{::player.DeckInfo.NationCode}}"></span>
+                      <span title="{{::player.DeckInfo.SpecName}}" class="ewg-deck-img ewg-spec-{{::player.DeckInfo.SpecCode}}"></span>
+                  </td>
+                  <td title="{{::player.PlayerName }}">{{::player.PlayerName }}</td>
+                  <td>{{::player.PlayerLevel}}</td>
+                  <td>{{::player.PlayerRank}}</td>
+                  <td>{{::player.PlayerElo}}</td>
+                  <td>
+                      [<a ng-click="vm.copyToClipboard(player.PlayerDeckContent)" class="ewg-no-href-link">deck</a>]
+                  </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
     </div>
 ﻿  </div>
