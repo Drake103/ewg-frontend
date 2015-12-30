@@ -5,11 +5,10 @@
 
   $large-screen: em(860) !default;
   $horizontal-bar-mode: $large-screen;
-  $panel-heading-height: 30px;
+  $panel-heading-height: 24px;
 
   .panel-heading-wrapper {
     min-height: $panel-heading-height;
-    padding: 10px;
     border-bottom: 1px solid #333;
     @include clearfix;
 
@@ -35,6 +34,6 @@
   }
 
   .panel-body {
-    padding: 10px;
+    @include clearfix;
   }
 }

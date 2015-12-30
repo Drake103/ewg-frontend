@@ -1,10 +1,14 @@
 ﻿<div class="panel" ng-controller='ReplaysCardController as vm'>
+
 ﻿  <div class="panel-heading-wrapper">
     <div class="panel-heading">
       <h3>{{::replay.Title}}</h3>
     </div>
+
 ﻿  </div>
+
 ﻿  <div class="panel-body">
+
     <div class="rc-game-info">
         <div class="rc-minimap">
           <img class="img-rounded" style="border: 1px solid grey; width: 140px; height: 140px;"
@@ -32,15 +36,15 @@
     <div class="rc-players-info">
         <div>
             <h2 class="army-style-font" style="color: #2525dd">BLUEFOR</h2>
-            <table class="table table-condensed table-striped ewg-players-table">
+            <table class="players-table">
               <thead>
                 <tr>
-                    <th></th>
-                    <th>Player</th>
-                    <th>Level</th>
-                    <th>Rank</th>
-                    <th>ELO</th>
-                    <th></th>
+                  <th class="faction-col"></th>
+                  <th class="player-col">Player</th>
+                  <th class="level-col">Level</th>
+                  <th class="rank-col">Rank</th>
+                  <th class="elo-col">ELO</th>
+                  <th class="deck-col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -50,11 +54,11 @@
                         <span title="{{::player.DeckInfo.SpecName}}" class="ewg-deck-img ewg-spec-{{::player.DeckInfo.SpecCode}}"></span>
                     </td>
                     <td title="{{::player.PlayerName }}">{{::player.PlayerName}}</td>
-                    <td>{{::player.PlayerLevel}}</td>
-                    <td>{{::player.PlayerRank}}</td>
-                    <td>{{::player.PlayerElo}}</td>
+                    <td class="align-right">{{::player.PlayerLevel}}</td>
+                    <td class="align-right">{{::player.PlayerRank}}</td>
+                    <td class="align-right">{{::player.PlayerElo}}</td>
                     <td>
-                        [<a ng-click="vm.copyToClipboard(player.PlayerDeckContent)" class="ewg-no-href-link">deck</a>]
+                        [<a ng-click="vm.copyToClipboard(player.PlayerDeckContent, $event)" class="action-link">deck</a>]
                     </td>
                 </tr>
               </tbody>
@@ -65,12 +69,12 @@
           <table class="players-table">
             <thead>
               <tr>
-                  <th></th>
-                  <th>Player</th>
-                  <th>Level</th>
-                  <th>Rank</th>
-                  <th>ELO</th>
-                  <th></th>
+                <th class="faction-col"></th>
+                <th class="player-col">Player</th>
+                <th class="level-col">Level</th>
+                <th class="rank-col">Rank</th>
+                <th class="elo-col">ELO</th>
+                <th class="deck-col"></th>
               </tr>
             </thead>
             <tbody>
@@ -80,11 +84,11 @@
                       <span title="{{::player.DeckInfo.SpecName}}" class="ewg-deck-img ewg-spec-{{::player.DeckInfo.SpecCode}}"></span>
                   </td>
                   <td title="{{::player.PlayerName }}">{{::player.PlayerName }}</td>
-                  <td>{{::player.PlayerLevel}}</td>
-                  <td>{{::player.PlayerRank}}</td>
-                  <td>{{::player.PlayerElo}}</td>
+                  <td class="align-right">{{::player.PlayerLevel}}</td>
+                  <td class="align-right">{{::player.PlayerRank}}</td>
+                  <td class="align-right">{{::player.PlayerElo}}</td>
                   <td>
-                      [<a ng-click="vm.copyToClipboard(player.PlayerDeckContent)" class="ewg-no-href-link">deck</a>]
+                      [<a ng-click="vm.copyToClipboard(player.PlayerDeckContent, $event)" class="action-link">deck</a>]
                   </td>
               </tr>
             </tbody>

@@ -4,8 +4,14 @@
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
 
 @include font-face("Open Sans", "/fonts/opensans/opensans-regular", $file-formats: ttf);
+@include font-face("Bombardier", "/fonts/BOMBARD_", $file-formats: otf);
 
 $open-sans: "Open Sans", Tahoma, Verdana, Arial, sans-serif;
+$bombardier: 'Bombardier', 'Open Sans', Tahoma, Verdana, Arial, sans-serif;
+
+.army-style-font {
+    font-family: Bombardier
+}
 
 @import './common/colors.scss';
 
@@ -13,6 +19,7 @@ body {
   margin: 0;
   background-color: $background;
   font-family: $open-sans;
+  font-size: 12px;
 }
 
 #content-wrapper {

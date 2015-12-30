@@ -1,61 +1,61 @@
 <div class="panel" ng-controller="ReplaysListController as vm">
 
-    <div class="panel-heading-wrapper">
-        <div class="panel-heading">
-          <h3>Replays</h3>
-        </div>
-
-        <div class="panel-tools">
-          <p>
-            <form class="search-bar" role="search">
-              <input type="search" placeholder="Search" ng-model="vm.searchStr" ng-model-options="{debounce: 1000}" />
-            </form>
-          </p>
-        </div>
+  <div class="panel-heading-wrapper">
+    <div class="panel-heading">
+      <h3>Replays</h3>
     </div>
 
-    <div class="panel-body">
-      <table class="ewg-replays-table">
-        <thead>
-          <tr>
-              <th>Upload date</th>
-              <th>Title</th>
-              <th>Players</th>
-              <th>Map</th>
-              <th>Game mode</th>
-              <th>Version</th>
-              <th>Download</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="replay in vm.replays" ng-click="vm.browseReplay(replay.Id)">
-              <td>{{::replay.UploadDate | date:'yyyy-MM-dd'}}</td>
-              <td>{{::replay.Title}}</td>
-              <td>{{::replay.PlayersCount}}</td>
-              <td>{{::replay.MapName}}</td>
-              <td>{{::replay.VictoryConditionName}}</td>
-              <td>{{::replay.GameVersion}}</td>
-              <td ng-click="vm.stopPropagation($event)"><a ng-href="/Replays/GetReplayFile?replayId={{::replay.Id}}"><span class="fa fa-download"></span></a></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <nav style="text-align: center" data-ng-show="vm.totalPages > 1">
-          <ul class="pagination">
-              <li>
-                  <button class="btn" ng-disabled="vm.currentPage <= 1" data-ng-click="vm.browsePage(1)" aria-label="First">
-                      <span aria-hidden="true">&laquo;</span>
-                  </button>
-              </li>
-              <li data-ng-repeat="page in vm.pages">
-                  <button class="btn" ng-disabled="vm.currentPage == page" data-ng-click="vm.browsePage(page)">{{page}}</button>
-              </li>
-              <li>
-                  <button class="btn" ng-disabled="vm.currentPage >= vm.totalPages" data-ng-click="vm.browsePage(vm.totalPages)" aria-label="Last">
-                      <span aria-hidden="true">&raquo;</span>
-                  </button>
-              </li>
-          </ul>
-      </nav>
+    <div class="panel-tools">
+      <p>
+        <form class="search-bar" role="search">
+          <input type="search" placeholder="Search" ng-model="vm.searchStr" ng-model-options="{debounce: 1000}" />
+        </form>
+      </p>
     </div>
+  </div>
+
+  <div class="panel-body">
+    <table class="replays-table">
+      <thead>
+        <tr>
+            <th>Upload date</th>
+            <th>Title</th>
+            <th class="centered">Players</th>
+            <th>Map</th>
+            <th class="centered">Game mode</th>
+            <th>Version</th>
+            <th class="centered">Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="replay in vm.replays" ng-click="vm.browseReplay(replay.Id)">
+            <td>{{::replay.UploadDate | date:'yyyy-MM-dd'}}</td>
+            <td>{{::replay.Title}}</td>
+            <td class="centered">{{::replay.PlayersCount}}</td>
+            <td>{{::replay.MapName}}</td>
+            <td class="centered">{{::replay.VictoryConditionName}}</td>
+            <td>{{::replay.GameVersion}}</td>
+            <td class="centered"><a class="btn btn-sm btn-primary" ng-click="vm.stopPropagation($event)" ng-href="/Replays/GetReplayFile?replayId={{::replay.Id}}"><span class="fa fa-download"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav style="text-align: center" data-ng-show="vm.totalPages > 1">
+        <ul class="pagination">
+            <li>
+                <button class="btn" ng-disabled="vm.currentPage <= 1" data-ng-click="vm.browsePage(1)" aria-label="First">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            <li data-ng-repeat="page in vm.pages">
+                <button class="btn" ng-disabled="vm.currentPage == page" data-ng-click="vm.browsePage(page)">{{page}}</button>
+            </li>
+            <li>
+                <button class="btn" ng-disabled="vm.currentPage >= vm.totalPages" data-ng-click="vm.browsePage(vm.totalPages)" aria-label="Last">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+  </div>
 </div>
