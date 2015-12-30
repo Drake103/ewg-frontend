@@ -8,8 +8,12 @@
   $panel-heading-height: 30px;
 
   .panel-heading-wrapper {
+    min-height: $panel-heading-height;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    @include clearfix;
+
     .panel-heading {
-      min-height: $panel-heading-height;
 
       @include media ($horizontal-bar-mode) {
         float: left;
@@ -28,5 +32,9 @@
         float: right;
       }
     }
+  }
+
+  .panel-body {
+    padding: 10px;
   }
 }

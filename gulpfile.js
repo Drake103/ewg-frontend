@@ -54,7 +54,7 @@ gulp.task('sass:watch', function() {
 });
 
 gulp.task('fonts', function() {
-  gulp.src(['node_modules/font-awesome/fonts/*', './fonts/*'])
+  gulp.src(['node_modules/font-awesome/fonts/*', './fonts/**/*'])
     .pipe(gulp.dest('public/fonts'));
 });
 

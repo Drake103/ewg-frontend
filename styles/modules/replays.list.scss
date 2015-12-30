@@ -15,4 +15,10 @@ form.search-bar {
 
 .ewg-replays-table{
   @extend .table-minimal;
+
+  tbody {
+    td {
+      cursor: pointer;
+    }
+  }
 }

@@ -1,5 +1,19 @@
 $deck-small-path: '/images/deck/small';
 
+.ewg-deck-img,
+.ewg-deck-flag {
+    height: 16px;
+    width: 16px;
+    margin-right: 2px;
+    display: block;
+    float: left;
+}
+
+.ewg-deck-flag {
+    height: 16px;
+    width: 24px;
+}
+
 /* Nations - begin */
 
 .ewg-nations-ussr {

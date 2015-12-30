@@ -3,11 +3,16 @@
 
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
 
+@include font-face("Open Sans", "/fonts/opensans/opensans-regular", $file-formats: ttf);
+
+$open-sans: "Open Sans", Tahoma, Verdana, Arial, sans-serif;
+
 @import './common/colors.scss';
 
 body {
   margin: 0;
   background-color: $background;
+  font-family: $open-sans;
 }
 
 #content-wrapper {

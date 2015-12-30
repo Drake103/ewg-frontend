@@ -142,15 +142,6 @@ a.ewg-site-header:visited {
 .ewg-no-href-link:hover {
     cursor: pointer;
 }
-
-a:hover, a:focus {
-    color: lightgray;
-}
-
-a {
-    color: lightgray;
-}
-
 .pagination > li > .btn {
     background-color: #464545;
 }
@@ -187,22 +178,6 @@ a {
 
 .bg-primary:hover {
     background-color: darkred;
-}
-
-.btn-primary,
-.btn-primary:link,
-.btn-primary:active,
-.btn-primary:focus {
-    outline: 0;
-    background-color: #bb0000;
-    border-color: #bb0000;
-    color: white;
-}
-.btn-primary:hover,
-.btn-primary:visited {
-    background-color: darkred;
-    border-color: darkred;
-    color: white;
 }
 
 @font-face {

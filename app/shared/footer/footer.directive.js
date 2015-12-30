@@ -2,7 +2,7 @@ import FooterController from './footer.controller';
 
 class Footer {
   constructor() {
-    this.restrict = 'E';
+    this.restrict = 'A';
     this.templateUrl = '/shared/footer/footer.view.html';
     this.controller = FooterController;
   }
