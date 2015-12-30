@@ -13,12 +13,13 @@ form.search-bar {
 }
 
 
-.ewg-replays-table{
+.replays-table{
   @extend .table-minimal;
 
   tbody {
     td {
       cursor: pointer;
+      line-height: 1.2em;
     }
   }
 }

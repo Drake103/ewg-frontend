@@ -41,6 +41,10 @@
       border-bottom: 0px;
       padding: $table-padding;
       text-align: left;
+
+      &.centered {
+        text-align: center;
+      }
     }
   }
 
@@ -67,6 +71,10 @@
           margin-bottom: 0;
           width: auto;
         }
+      }
+
+      &.centered {
+        text-align: center;
       }
     }
   }
