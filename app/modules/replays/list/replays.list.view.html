@@ -1,4 +1,4 @@
-<div class="panel" ng-controller="ReplaysListController as vm">
+<div class="panel">
 
   <div class="panel-heading-wrapper">
     <div class="panel-heading">
@@ -35,27 +35,31 @@
             <td>{{::replay.MapName}}</td>
             <td class="centered">{{::replay.VictoryConditionName}}</td>
             <td>{{::replay.GameVersion}}</td>
-            <td class="centered"><a class="btn btn-sm btn-primary" ng-click="vm.stopPropagation($event)" ng-href="/Replays/GetReplayFile?replayId={{::replay.Id}}"><span class="fa fa-download"></span></a></td>
+            <td class="centered"><a class="btn btn-primary btn-round" ng-click="vm.stopPropagation($event)" ng-href="{{vm.getDownloadUrl(replay.Id)}}"><span class="fa fa-download"></span></a></td>
         </tr>
       </tbody>
     </table>
 
-    <nav style="text-align: center" data-ng-show="vm.totalPages > 1">
-        <ul class="pagination">
-            <li>
-                <button class="btn" ng-disabled="vm.currentPage <= 1" data-ng-click="vm.browsePage(1)" aria-label="First">
+    <div class="pagination" ng-show="vm.totalPages > 1">
+        <ul>
+            <li class="page-prev">
+                <button class="btn btn-sm btn-default" ng-disabled="vm.currentPage <= 1" ng-click="vm.browsePage(1)" aria-label="First">
                     <span aria-hidden="true">&laquo;</span>
                 </button>
             </li>
-            <li data-ng-repeat="page in vm.pages">
-                <button class="btn" ng-disabled="vm.currentPage == page" data-ng-click="vm.browsePage(page)">{{page}}</button>
-            </li>
             <li>
-                <button class="btn" ng-disabled="vm.currentPage >= vm.totalPages" data-ng-click="vm.browsePage(vm.totalPages)" aria-label="Last">
+              <ul>
+                <li ng-repeat="page in vm.pages">
+                  <button class="btn btn-sm btn-default" ng-disabled="vm.currentPage == page" ng-click="vm.browsePage(page)">{{page}}</button>
+                </li>
+              </ul>
+            </li>
+            <li class="page-next">
+                <button class="btn btn-sm btn-default" ng-disabled="vm.currentPage >= vm.totalPages" ng-click="vm.browsePage(vm.totalPages)" aria-label="Last">
                     <span aria-hidden="true">&raquo;</span>
                 </button>
             </li>
         </ul>
-    </nav>
+    </div>
   </div>
 </div>

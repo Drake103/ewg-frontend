@@ -1,6 +1,7 @@
 import angular from 'angular';
 import 'angular-route';
 import 'angular-resource';
+import 'ng-file-upload';
 
 import ReplaysService from './replays.service';
 import ReplaysListController from './list/replays.list.controller';
@@ -12,7 +13,7 @@ import httpProviderConfig from './replays.config.http_provider';
 
 let moduleName = 'ReplaysModule';
 
-let ngModule = angular.module(moduleName, ['ngRoute', 'ngResource']);
+let ngModule = angular.module(moduleName, ['ngRoute', 'ngResource', 'ngFileUpload']);
 
 ngModule.factory('ReplaysService', ReplaysService.createInstance);
 ngModule.controller('ReplaysListController', ReplaysListController);

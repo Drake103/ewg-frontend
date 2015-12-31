@@ -2,9 +2,10 @@ import _ from 'lodash';
 import config from 'config';
 
 class ReplaysService {
-  constructor($q, $resource) {
+  constructor($q, $resource, $http) {
     this.$q = $q;
     this.$resource = $resource;
+    this.$http = $http;
   }
 
   _parseResponseDates(response) {
@@ -29,12 +30,8 @@ class ReplaysService {
     let params = {
       searchText,
     };
-    let resource = this.$resource(this.apiRootOld + '/Replays/GetCount', params, {
-      get: {
-        method:'GET',
-      },
-    });
-    return resource.get().$promise;
+
+    return this.$http.get(this.apiRootOld + '/Replays/GetCount', params);
   }
 
   getById(replayId) {
@@ -50,14 +47,32 @@ class ReplaysService {
     return resource.get().$promise;
   }
 
-  static createInstance($q, $resource) {
-    ReplaysService.instance = new ReplaysService($q, $resource);
+  setTitle(replayId, token, title) {
+    let requestObj = {
+      replayId: replayId,
+      token: token,
+      newTitle: title,
+    };
+
+    return this.$http.post(this.apiRootOld + '/Replays/SetTitle', requestObj);
+  }
+
+  getUploadUrl() {
+    return this.apiRootOld + '/Replays/Upload';
+  }
+
+  getDownloadUrl(replayId) {
+    return this.apiRootOld + '/Replays/GetReplayFile?replayId=' + replayId;
+  }
+
+  static createInstance($q, $resource, $http) {
+    ReplaysService.instance = new ReplaysService($q, $resource, $http);
     return ReplaysService.instance;
   }
 }
 
 ReplaysService.prototype.apiRoot = config.apiRoot;
 ReplaysService.prototype.apiRootOld = config.apiRootOld;
-ReplaysService.createInstance.$inject = ['$q', '$resource'];
+ReplaysService.createInstance.$inject = ['$q', '$resource', '$http'];
 
 export default ReplaysService;

@@ -47,6 +47,7 @@
     "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "lodash": "^3.10.1",
+    "ng-file-upload": "^11.0.0",
     "node-bourbon": "^4.2.3",
     "node-neat": "^1.7.2",
     "q": "^1.4.1",
