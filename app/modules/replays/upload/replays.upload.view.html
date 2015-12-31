@@ -1,20 +1,21 @@
-<div class="panel" ng-controller="ReplaysUploadController as vm">
+<div class="panel">
 
     <div class="panel-heading-wrapper">
         <div class="panel-heading">
           <h3>Upload Replay</h3>
         </div>
     </div>
-    
+
     <div class="panel-body">
       <div class="drop-zone" ng-show="state == 0">
           <div>
-              <div ng-file-drop ng-file-select ng-model="files"
-                   drag-over-class="dragover" ng-multiple="false" allow-dir="true"
-                   accept=".wargamerpl2" style="padding: 54px;">
+              <div ngf-drop ngf-select ng-model="files"
+                   ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
+                   accept="application/text"
+                   ngf-pattern="'.wargamerpl2'" style="padding: 54px;">
                   <p class="text-center" style="font-size: 14pt;">Drop replay here or click to upload</p>
               </div>
-              <div ng-no-file-drop>File Drag/Drop is not supported for this browser</div>
+              <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
           </div>
       </div>
       <div ng-show="state == 1" class="ewg-upload-inner" style="padding: 20px;">
@@ -33,7 +34,7 @@
           <div class="input-group" style="margin: 20px;">
               <input class="form-control" type="text" placeholder="Title" id="title" name="title" ng-model="vm.title" value="no title" required />
               <span class="input-group-btn">
-                  <input class="btn btn-primary" type="submit" data-ng-click="vm.setTitle()" value="Set title">
+                  <input class="btn btn-sm btn-primary" type="submit" data-ng-click="vm.setTitle()" value="Set title">
               </span>
           </div>
       </form>

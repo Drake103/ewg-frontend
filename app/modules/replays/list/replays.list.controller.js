@@ -10,12 +10,10 @@ class ReplaysListController {
     this.$location = $location;
     this.ReplaysService = ReplaysService;
 
-    let replayId = $routeParams.view || -1;
-    let pageNumber = $routeParams.page || 1;
-    let search = $routeParams.search;
-
-    this.currentPage = pageNumber;
-    this.searchStr = search;
+    this.currentPage = $routeParams.page || 1;
+    console.log(this.currentPage);
+    this.totalPages = 0;
+    this.searchStr = $routeParams.search;
 
     this._loadReplays(this.searchStr);
 
@@ -24,20 +22,14 @@ class ReplaysListController {
         this.search(newVal);
       }
     });
-
-    if (replayId > 0) {
-      this.browseReplay(replayId);
-    }
   }
 
   browsePage(pageNum) {
-    $location.search('page', pageNum).search('view', null).search('search', null);
-    this.currentPage = pageNum;
-    this.loadReplays(null);
+    this.$location.path('/replays').search('page', pageNum).search('search', null);
   }
 
   browseReplay(replayId) {
-    this.$location.path('/replays/' + replayId);
+    this.$location.path('/replays/' + replayId).search('page', null).search('search', null);
   }
 
   stopPropagation(e) {
@@ -51,12 +43,16 @@ class ReplaysListController {
     this._loadReplays(text);
   }
 
+  getDownloadUrl(replayId) {
+    return this.ReplaysService.getDownloadUrl(replayId);
+  }
+
   _loadReplays(searchText) {
 
-    this.ReplaysService.getCount(searchText).then(data => {
-      this.totalCount = data;
+    this.ReplaysService.getCount(searchText).then(resp => {
+      this.totalCount = resp.data;
 
-      this.totalPages = Math.floor(data / defaultPageSize) + 1;
+      this.totalPages = Math.floor(this.totalCount / defaultPageSize) + 1;
 
       var list = [];
       for (var i = 1; i <= this.totalPages; i++) {
@@ -65,7 +61,7 @@ class ReplaysListController {
 
       this.pages = list;
 
-      var startIndex = (this.currentPage - 1) * defaultPageSize;
+      let startIndex = (this.currentPage - 1) * defaultPageSize;
 
       if (this.totalCount < startIndex) {
         //$location.path('/replays');
@@ -75,7 +71,7 @@ class ReplaysListController {
       this.ReplaysService.getLatest(startIndex, defaultPageSize, searchText).then(resp => {
         this.replays = resp;
       });
-    }, err => { alert(err);});
+    }, err => { alert(err.msg);});
   }
 }
 

@@ -20,7 +20,7 @@
 
 .btn-primary {
   $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
+  $base-border-radius: 5px !default;
   $base-line-height: 1.5em !default;
   $base-spacing: 1.5em !default;
   $base-font-size: 1em !default;
@@ -44,6 +44,38 @@
   }
 }
 
+.btn-default {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 5px !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $base-font-size: 1em !default;
+  $base-background-color: white !default;
+  $large-screen: em(860) !default;
+  $base-font-color: black !default;
+  $button-background: white;
+  $button-color: lighten($base-font-color, 30%);
+  $button-border: 1px solid silver;
+
+  background: $button-background;
+  border: $button-border;
+  border-radius: $base-border-radius;
+  color: $button-color;
+  font-size: $base-font-size;
+
+  &:focus,
+  &:hover {
+    background-color: darken($button-background, 3%);
+    box-shadow: inset 0 2px 3px darken($button-background, 10%);
+  }
+}
+
 .btn-sm {
   padding: 0.25em;
+}
+
+.btn-round {
+  border: none;
+  border-radius: 15px;
+  padding: 0.4em 0.5em;
 }

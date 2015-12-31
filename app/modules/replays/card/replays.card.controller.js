@@ -12,6 +12,10 @@ class ReplaysCardController {
     });
   }
 
+  getDownloadUrl(replayId) {
+    return this.ReplaysService.getDownloadUrl(replayId);
+  }
+
   copyToClipboard(text, $event) {
     $event.stopPropagation();
     window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
