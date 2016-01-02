@@ -2,6 +2,7 @@ import _ from 'lodash';
 import config from 'config';
 
 let defaultPageSize = config.replays.defaultPageSize;
+let paginationSize = 6;
 
 class ReplaysListController {
   constructor($scope, $routeParams, $location, ReplaysService) {
@@ -10,8 +11,9 @@ class ReplaysListController {
     this.$location = $location;
     this.ReplaysService = ReplaysService;
 
+    console.log(this.$routeParams);
+
     this.currentPage = $routeParams.page || 1;
-    console.log(this.currentPage);
     this.totalPages = 0;
     this.searchStr = $routeParams.search;
 
@@ -25,7 +27,9 @@ class ReplaysListController {
   }
 
   browsePage(pageNum) {
-    this.$location.path('/replays').search('page', pageNum).search('search', null);
+    this.$location.search('page', pageNum);
+    this.currentPage = pageNum;
+    this._loadReplays(this.searchStr);
   }
 
   browseReplay(replayId) {
@@ -51,11 +55,26 @@ class ReplaysListController {
 
     this.ReplaysService.getCount(searchText).then(resp => {
       this.totalCount = resp.data;
-
       this.totalPages = Math.floor(this.totalCount / defaultPageSize) + 1;
 
-      var list = [];
-      for (var i = 1; i <= this.totalPages; i++) {
+      let list = [];
+
+      let halfPaginationSize = paginationSize / 2;
+
+      let leftStart = Math.max(this.currentPage - halfPaginationSize, 1);
+      let rightEnd = Math.min(this.currentPage + halfPaginationSize, this.totalPages);
+
+      if (rightEnd < this.totalPages) {
+        let gap = halfPaginationSize - (this.currentPage - leftStart);
+        rightEnd = Math.min(rightEnd + gap, this.totalPages);
+      }
+
+      if (leftStart > 1) {
+        let gap =  halfPaginationSize - (rightEnd - this.currentPage);
+        leftStart = Math.max(leftStart - gap, 1);
+      }
+
+      for (let i = leftStart; i <= rightEnd; i++) {
         list.push(i);
       }
 

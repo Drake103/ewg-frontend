@@ -44,7 +44,6 @@
     }
 
     li a, li button {
-      @include transition (all 0.2s ease-in-out);
       background: $pagination-background;
       border-radius: $base-border-radius;
       border: $pagination-border;
@@ -66,6 +65,7 @@
       &:disabled {
         background: $pagination-active-background;
         cursor: not-allowed;
+        color: $pagination-color;
       }
     }
   }
