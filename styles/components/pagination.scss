@@ -13,6 +13,7 @@
   $pagination-border: 1px solid $pagination-border-color;
   $pagination-background: lighten($pagination-border-color, 10);
   $pagination-hover-background: lighten($pagination-background, 5);
+  $pagination-active-background: darken($pagination-background, 5);
   $pagination-color: $base-font-color;
 
   text-align: center;
@@ -42,8 +43,7 @@
       }
     }
 
-    li a {
-      @include transition (all 0.2s ease-in-out);
+    li a, li button {
       background: $pagination-background;
       border-radius: $base-border-radius;
       border: $pagination-border;
@@ -59,7 +59,13 @@
       }
 
       &:active {
-        background: $pagination-background;
+        background: $pagination-active-background;
+      }
+
+      &:disabled {
+        background: $pagination-active-background;
+        cursor: not-allowed;
+        color: $pagination-color;
       }
     }
   }

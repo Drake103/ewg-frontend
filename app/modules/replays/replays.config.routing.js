@@ -3,6 +3,7 @@ function routingConfig($routeProvider) {
     .when('/replays', {
       templateUrl: './modules/replays/list/replays.list.view.html',
       controller: 'ReplaysListController',
+      reloadOnSearch: false,
       controllerAs: 'vm',
     })
     .when('/replays/:replayId', {
@@ -16,9 +17,7 @@ function routingConfig($routeProvider) {
       controllerAs: 'vm',
     })
     .otherwise({
-      templateUrl: './modules/replays/list/replays.list.view.html',
-      controller: 'ReplaysListController',
-      controllerAs: 'vm',
+      redirectTo: '/replays',
     });
 }
 

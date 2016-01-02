@@ -42,9 +42,9 @@
 
     <div class="pagination" ng-show="vm.totalPages > 1">
         <ul>
-            <li class="page-prev">
+            <li class="page-prev" ng-show="vm.pages[0] != 1">
                 <button class="btn btn-sm btn-default" ng-disabled="vm.currentPage <= 1" ng-click="vm.browsePage(1)" aria-label="First">
-                    <span aria-hidden="true">&laquo;</span>
+                  <span class="fa fa-long-arrow-left"></span>
                 </button>
             </li>
             <li>
@@ -54,9 +54,9 @@
                 </li>
               </ul>
             </li>
-            <li class="page-next">
+            <li class="page-next" ng-show="vm.pages[vm.pages.length - 1] != vm.totalPages">
                 <button class="btn btn-sm btn-default" ng-disabled="vm.currentPage >= vm.totalPages" ng-click="vm.browsePage(vm.totalPages)" aria-label="Last">
-                    <span aria-hidden="true">&raquo;</span>
+                  <span class="fa fa-long-arrow-right"></span>
                 </button>
             </li>
         </ul>
