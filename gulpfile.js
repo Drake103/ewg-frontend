@@ -17,18 +17,19 @@ var express       = require('express');
 var sass          = require('gulp-sass');
 var neat          = require('node-neat');
 var rigger        = require('gulp-rigger');
+var uglifyify     = require('uglifyify');
 
 gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
-      baseDir: './public',
+      baseDir: './dist',
     },
   });
 });
 
 gulp.task('static-server', function() {
   var app = express();
-  app.use(express.static('./public'));
+  app.use(express.static('./dist'));
   var server = app.listen(3000, function() {
     var host = server.address().address;
     var port = server.address().port;
@@ -46,7 +47,7 @@ gulp.task('sass:build', function() {
     .pipe(autoprefixer())
     .pipe(concat('style.css'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./public/assets'));
+    .pipe(gulp.dest('./dist/assets'));
 });
 
 gulp.task('sass:watch', function() {
@@ -55,13 +56,13 @@ gulp.task('sass:watch', function() {
 
 gulp.task('fonts', function() {
   gulp.src(['node_modules/font-awesome/fonts/*', './fonts/**/*'])
-    .pipe(gulp.dest('public/fonts'));
+    .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('images:build', function() {
   gulp.src('./images/**/*')
       .pipe(imagemin())
-      .pipe(gulp.dest('./public/images'));
+      .pipe(gulp.dest('./dist/images'));
 });
 
 gulp.task('images:watch', function() {
@@ -82,6 +83,7 @@ gulp.task('js:build', function() {
   });
 
   bundle.transform(babelify, { presets: ['es2015'] });
+  bundle.transform(uglifyify);
   bundle.require('./app/config/client.js', { expose: 'config' });
 
   bundle.bundle()
@@ -89,7 +91,7 @@ gulp.task('js:build', function() {
       console.log(err.message);
     })
     .pipe(source('script.js'))
-    .pipe(gulp.dest('./public/assets'));
+    .pipe(gulp.dest('./dist/assets'));
 });
 
 gulp.task('js:watch', function() {
@@ -100,7 +102,7 @@ gulp.task('html:build', function() {
   gulp.src(['./app/**/*.html'])
       .pipe(rigger())
       .on('error', console.log)
-  .pipe(gulp.dest('./public'));
+  .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('html:watch', function() {
