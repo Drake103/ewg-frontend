@@ -31,7 +31,6 @@
 
   .navigation-wrapper {
     @include clearfix;
-    @include outer-container;
     position: relative;
     z-index: 9999;
   }
@@ -60,10 +59,6 @@
     text-decoration: none;
     text-transform: uppercase;
 
-    @include media ($horizontal-bar-mode) {
-      display: none;
-    }
-
     &:focus,
     &:hover {
       color: $navigation-color-hover;
@@ -76,10 +71,6 @@
     float: none;
     min-height: $navigation-height;
     z-index: 9999999;
-
-    @include media ($horizontal-bar-mode) {
-      float: left;
-    }
   }
 
   ul.navigation-menu {
@@ -93,12 +84,6 @@
 
     &.show {
       display: block;
-    }
-
-    @include media ($horizontal-bar-mode) {
-      display: inline;
-      margin: 0;
-      padding: 0;
     }
   }
 
@@ -114,22 +99,10 @@
     width: 100%;
     z-index: 9999;
 
-    @include media ($horizontal-bar-mode) {
-      background: transparent;
-      display: inline;
-      line-height: $navigation-height;
-      text-decoration: none;
-      width: auto;
-    }
-
     a {
       color: $navigation-color;
       display: inline-block;
       text-decoration: none;
-
-      @include media ($horizontal-bar-mode) {
-        padding-right: 1em;
-      }
 
       &:focus,
       &:hover {
@@ -147,10 +120,6 @@
 
   li.more.nav-link {
     padding-right: 0;
-
-    @include media($horizontal-bar-mode) {
-      padding-right: $navigation-submenu-padding;
-    }
 
     > ul > li:first-child a  {
       padding-top: 1em;
@@ -183,10 +152,6 @@
       padding-right: 1.6em;
       position: relative;
 
-      @include media($horizontal-bar-mode) {
-        margin-right: $navigation-submenu-padding;
-      }
-
       &:after {
         content: '›';
         font-size: 1.2em;
@@ -199,48 +164,31 @@
     &:hover > .submenu {
       display: block;
     }
-
-    @include media($horizontal-bar-mode) {
-      padding-right: 0.8em;
-      position: relative;
-    }
   }
 
   ul.submenu {
     display: none;
     padding-left: 0;
 
-    @include media($horizontal-bar-mode) {
-      left: -$navigation-submenu-padding;
-      position: absolute;
-      top: 1.5em;
-    }
-
     .submenu {
-      @include media($horizontal-bar-mode) {
-        left: $navigation-submenu-width - 0.2em;
-        top: 0;
-      }
     }
 
     li {
       display: block;
       padding-right: 0;
 
-      @include media($horizontal-bar-mode) {
-        line-height: $navigation-height / 1.3;
-
-        &:first-child > a {
-          border-top-left-radius: $base-border-radius;
-          border-top-right-radius: $base-border-radius;
-        }
-
-        &:last-child > a {
-          border-bottom-left-radius: $base-border-radius;
-          border-bottom-right-radius: $base-border-radius;
-          padding-bottom: 0.7em;
-        }
-      }
+      line-height: $navigation-height / 1.3;
+      
+              &:first-child > a {
+                border-top-left-radius: $base-border-radius;
+                border-top-right-radius: $base-border-radius;
+              }
+      
+              &:last-child > a {
+                border-bottom-left-radius: $base-border-radius;
+                border-bottom-right-radius: $base-border-radius;
+                padding-bottom: 0.7em;
+              }
 
       a {
         background-color: darken($navigation-background, 3%);
@@ -248,12 +196,11 @@
         text-align: right;
         width: 100%;
 
-        @include media($horizontal-bar-mode) {
-          background-color: $navigation-background;
-          padding-left: $navigation-submenu-padding;
-          text-align: left;
-          width: $navigation-submenu-width;
-        }
+        
+        background-color: $navigation-background;
+        padding-left: $navigation-submenu-padding;
+        text-align: left;
+        width: $navigation-submenu-width;
       }
     }
   }
@@ -266,11 +213,10 @@
     display: block;
     height: $navigation-height;
 
-    @include media($horizontal-bar-mode) {
-      background: transparent;
-      clear: none;
-      float: right;
-    }
+    
+    background: transparent;
+    clear: none;
+    float: right;
   }
 
   // Search bar
@@ -297,10 +243,6 @@
         margin: 0;
         padding: 0.5em 0.8em;
         width: 100%;
-
-        @include media($horizontal-bar-mode) {
-          width: 100%;
-        }
       }
 
       button[type=submit] {
@@ -322,14 +264,12 @@
       }
     }
 
-    @include media($horizontal-bar-mode) {
-      display: inline-block;
-      position: relative;
-      width: 16em;
+    display: inline-block;
+    position: relative;
+    width: 16em;
 
-      input {
-        display: block;
-      }
+    input {
+      display: block;
     }
   }
 }

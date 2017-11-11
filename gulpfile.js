@@ -1,7 +1,6 @@
 var gulp          = require('gulp');
 var path          = require('path');
 var browserSync   = require('browser-sync').create();
-var jshint        = require('gulp-jshint');
 var browserify    = require('browserify');
 var source        = require('vinyl-source-stream');
 var pkg           = require('./package.json');
@@ -16,6 +15,7 @@ var gulpFilter    = require('gulp-filter');
 var express       = require('express');
 var sass          = require('gulp-sass');
 var neat          = require('node-neat');
+var bourbon       = require('bourbon');
 var rigger        = require('gulp-rigger');
 var uglifyify     = require('uglifyify');
 
@@ -43,7 +43,7 @@ gulp.task('sass:build', function() {
   gulp.src('./styles/**/*.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass.sync({ includePaths: neat.includePaths }).on('error', sass.logError))
+    .pipe(sass.sync({ includePaths: [].concat(neat.includePaths).concat(bourbon.includePaths) }).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('style.css'))
     .pipe(sourcemaps.write('.'))

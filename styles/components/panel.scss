@@ -13,10 +13,6 @@
     @include clearfix;
 
     .panel-heading {
-
-      @include media ($horizontal-bar-mode) {
-        float: left;
-      }
     }
 
     .panel-tools {
@@ -24,12 +20,6 @@
       clear: both;
       display: block;
       min-height: $panel-heading-height;
-
-      @include media($horizontal-bar-mode) {
-        background: transparent;
-        clear: none;
-        float: right;
-      }
     }
   }
 

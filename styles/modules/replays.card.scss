@@ -6,21 +6,17 @@
 
 .rc-game-info {
   .rc-minimap {
-    @include span-columns(3);
     min-width: 150px;
   }
   .rc-general-info {
-    @include span-columns(5);
   }
   @include clearfix;
 }
 .rc-players-info {
   >div {
     &:nth-child(1) {
-      @include span-columns(6);
     }
     &:nth-child(2) {
-      @include span-columns(6);
     }
   }
   @include clearfix;

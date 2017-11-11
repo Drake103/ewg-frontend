@@ -21,7 +21,6 @@
   color: $footer-color;
 
   .footer-wrapper {
-    @include outer-container();
   }
 
   .stats {

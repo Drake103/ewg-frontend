@@ -37,10 +37,6 @@
       &:nth-child(3) {
         display: inline;
       }
-
-      @include media($large-screen) {
-        display: inline;
-      }
     }
 
     li a, li button {
@@ -49,7 +45,7 @@
       border: $pagination-border;
       color: $pagination-color;
       outline: none;
-      padding: ($base-spacing / 4) ($gutter / 2);
+      padding: ($base-spacing / 4);
       text-decoration: none;
 
       &:hover,
